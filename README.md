@@ -6,4 +6,6 @@ Usage:
 ```
 python -m fibonacci <n>
 ```
-to print the nth fibonacci number
+to print the nth fibonacci number.
+
+At the moment, this is quite slow. Contributions welcome!
