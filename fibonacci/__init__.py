@@ -1,5 +1,9 @@
 from functools import cache
 
+__all__ = [
+    'fibonacci',
+]
+
 @cache
 def fibonacci(n):
     if n == 0:
