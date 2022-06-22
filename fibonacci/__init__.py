@@ -14,7 +14,7 @@ def fibonacci(n):
     return fibonacci(n - 1) + fibonacci(n - 2)
 
 def fibonacci_tiling(n):
-    fibs = [fibonacci(i) for i in range(n)]
+    fibs = [fibonacci(i) for i in range(n+1)]
 
     fig, ax = plt.subplots()
 
