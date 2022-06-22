@@ -5,6 +5,12 @@ from matplotlib.patches import Rectangle
 from matplotlib.collections import PatchCollection
 import numpy as np
 
+__all__ = [
+    'fibonacci',
+    'fibonacci_generator',
+    'fibonacci_tiling',
+]
+
 @cache
 def fibonacci(n):
     if n == 0:
@@ -47,3 +53,20 @@ def fibonacci_tiling(n):
     plt.autoscale()
     plt.show()
 
+
+
+def fibonacci_generator(n):
+    yield 0
+
+    if n == 0:
+        return
+
+    yield 1
+
+    if n == 1:
+        return
+
+    n0, n1 = 0, 1
+    for _ in range(2, n):
+        n0, n1 = n1, n0 + n1
+        yield n1
