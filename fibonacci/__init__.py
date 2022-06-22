@@ -1,7 +1,7 @@
 from functools import cache
 import matplotlib
 import matplotlib.pyplot as plt
-from matplotlib.patches import Rectangle
+from matplotlib.patches import Rectangle, Arc
 from matplotlib.collections import PatchCollection
 import numpy as np
 
@@ -27,6 +27,9 @@ def fibonacci_tiling(n):
 
     x = 0
     y = 0
+    x_cent = 0
+    y_cent = 0
+    angle = 180
     prev_length = 0
 
     rectangles = []
@@ -34,21 +37,32 @@ def fibonacci_tiling(n):
         rectangles.append(Rectangle((x,y), length, length))
 
         if i % 4 == 0:
+            x_cent = x + length
+            y_cent = y + length
             x += length
         if i % 4 == 1:
+            x_cent = x
+            y_cent = y + length
             x -= prev_length
             y += length
         if i % 4 == 2:
+            x_cent = x
+            y_cent = y
             x -= length + prev_length
             y -= prev_length
         if i % 4 == 3:
+            x_cent = x + length
+            y_cent = y
             y -= length + prev_length
 
         prev_length = length
-
+        arc = (Arc(xy=(x_cent,y_cent), width=2*length, height=2*length, theta1=0, theta2=90, angle=angle))
+        ax.add_patch(arc)
+        angle += 90
 
     p = PatchCollection(rectangles)
-    p.set(array=np.arange(n + 1), cmap='inferno')
+    p.set(array=np.arange(n + 1), cmap='inferno', alpha=0.5)
+
 
     ax.set_axis_off()
     ax.add_collection(p)
