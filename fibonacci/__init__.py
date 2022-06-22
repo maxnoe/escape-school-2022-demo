@@ -22,7 +22,8 @@ def fibonacci(n):
 def fibonacci_tiling(n):
     fibs = [fibonacci(i) for i in range(n+1)]
 
-    fig, ax = plt.subplots()
+    fig = plt.figure()
+    ax = fig.add_axes([0, 0, 1, 1])
 
     x = 0
     y = 0
@@ -46,11 +47,14 @@ def fibonacci_tiling(n):
         prev_length = length
 
 
-    p = PatchCollection(rectangles, cmap=matplotlib.cm.jet, alpha=0.4)
-    p.set(array=np.asarray(range(n + 1)), cmap=matplotlib.cm.jet)
-    ax.add_collection(p)
+    p = PatchCollection(rectangles)
+    p.set(array=np.arange(n + 1), cmap='inferno')
 
-    plt.autoscale()
+    ax.set_axis_off()
+    ax.add_collection(p)
+    ax.set_aspect(1)
+    ax.autoscale()
+    ax.margins(0)
     plt.show()
 
 
