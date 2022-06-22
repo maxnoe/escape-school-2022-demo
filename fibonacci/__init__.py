@@ -56,7 +56,7 @@ def fibonacci_tiling(n):
             y -= length + prev_length
 
         prev_length = length
-        arc = (Arc(xy=(x_cent,y_cent), width=2*length, height=2*length, theta1=0, theta2=90, angle=angle))
+        arc = Arc(xy=(x_cent,y_cent), width=2*length, height=2*length, theta1=0, theta2=90, angle=angle)
         ax.add_patch(arc)
         angle += 90
 
