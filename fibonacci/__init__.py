@@ -29,6 +29,10 @@ def fibonacci_tiling(n):
     y = 0
     x_cent = 0
     y_cent = 0
+    xmin = 0
+    xmax = 1
+    ymin = 0
+    ymax = 1
     angle = 180
     prev_length = 0
 
@@ -40,20 +44,25 @@ def fibonacci_tiling(n):
             x_cent = x + length
             y_cent = y + length
             x += length
+            if i != 0:
+                ymin -= length
         if i % 4 == 1:
             x_cent = x
             y_cent = y + length
             x -= prev_length
             y += length
+            xmax += length
         if i % 4 == 2:
             x_cent = x
             y_cent = y
             x -= length + prev_length
             y -= prev_length
+            ymax += length
         if i % 4 == 3:
             x_cent = x + length
             y_cent = y
             y -= length + prev_length
+            xmin -= length
 
         prev_length = length
         arc = Arc(xy=(x_cent,y_cent), width=2*length, height=2*length, theta1=0, theta2=90, angle=angle)
@@ -67,8 +76,9 @@ def fibonacci_tiling(n):
     ax.set_axis_off()
     ax.add_collection(p)
     ax.set_aspect(1)
-    ax.autoscale()
     ax.margins(0)
+    plt.xlim(xmin,xmax)
+    plt.ylim(ymin,ymax)
     plt.show()
 
 
