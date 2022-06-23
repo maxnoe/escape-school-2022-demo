@@ -17,6 +17,14 @@ will print the fibonacci numbers up to and including `<n>`.
 python -m fibonacci <n> --tiles
 ```
 will plot the fibonacci tiles up to and including `<n>`.
+```
+python -m fibonacci <n> --word
+```
+will print the fibonacci word up to and including `<n>`.
+```
+python -m fibonacci <n> --fractal
+```
+will plot the fibonacci word fractal up to and including `<n>`.
 
 ```
 python -m fibonacci 40

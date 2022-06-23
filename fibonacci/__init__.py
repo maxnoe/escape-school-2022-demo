@@ -4,11 +4,14 @@ import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle
 from matplotlib.collections import PatchCollection
 import numpy as np
+import turtle
 
 __all__ = [
     'fibonacci',
     'fibonacci_generator',
     'fibonacci_tiling',
+    'fibonacci_word',
+    'fibonacci_fractal',
 ]
 
 @cache
@@ -58,6 +61,28 @@ def fibonacci_tiling(n):
     plt.show()
 
 
+def fibonacci_word(n):
+    w0 = np.array([False])
+    word = np.array([False,True])
+    for i in range(2, n + 1):
+        tmp = word
+        word = np.append(word,w0)
+        w0 = tmp
+    return word
+
+def fibonacci_fractal(n):
+    word = fibonacci_word(n)
+    s = turtle.getscreen()
+    t = turtle.Turtle()
+    for i, w in enumerate(word):
+        t.forward(5)
+        if w == False:
+            if i % 2 == 0:
+                t.left(90)
+            else:
+                t.right(90)
+
+    turtle.done()
 
 def fibonacci_generator(n):
     yield 0
