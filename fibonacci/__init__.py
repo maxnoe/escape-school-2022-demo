@@ -76,9 +76,8 @@ def fibonacci_tiling(n):
     ax.set_axis_off()
     ax.add_collection(p)
     ax.set_aspect(1)
-    ax.margins(0)
-    plt.xlim(xmin,xmax)
-    plt.ylim(ymin,ymax)
+    ax.set_xlim(xmin,xmax)
+    ax.set_ylim(ymin,ymax)
     plt.show()
 
 
